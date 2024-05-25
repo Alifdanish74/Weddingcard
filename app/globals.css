@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap'); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,6 +26,118 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.main-div {
+  max-width: 420px;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+  
+}
+
+.main-card {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.section {
+  padding: 2rem 0 2rem;
+}
+
+.section__title {
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section__height {
+  height: 100vh;
+}
+
+/* Font */
+.card-opening {
+  font-size: 16px;
+  margin-bottom: 2em;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+}
+
+.card-couple {
+  margin-bottom: 0.5em;
+}
+
+.card-groom, .card-bride, .card-with {
+  font-size: 72px;
+  font-family: 'Tangerine', serif;
+  /* text-shadow: 0px 0px 2px #fff; */
+  line-height: 1em;
+}
+
+.wedding-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-date {
+  font-size: 24px;
+  font-family: 'Libre', serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.card-location {
+  font-family: 'Libre', serif;
+  font-weight: bold;
+}
+
+.card-verse {
+  font-size: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.music-player {
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  width: 13px;
+  height: 13px;
+}
+
+.music-player > span {
+  width: 3px;
+  height: 100%;
+  background-color: #7c3aed;
+  border-radius: 3px;
+  transform-origin: bottom;
+  animation: barAnim 2.2s ease infinite alternate;
+  content: '';
+}
+
+.music-player.paused > span {
+  width: 3px;
+  height: 25%;
+  transform: translateY(10px);
+  background-color: #7c3aed;
+  border-radius: 3px;
+  transform-origin: bottom;
+  animation: none;
+  content: '';
+}
+
+
+/*=============== LAYOUT ===============*/
+.container {
+  max-width: 420px;
+  margin: auto;
 }
 
 @layer utilities {
