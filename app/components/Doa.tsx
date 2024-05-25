@@ -23,10 +23,10 @@ function Doa({}: Props) {
 
       {/* <div className="px-16 py-20"> */}
       <p className=" text-center text-sm text-black font-light flex-wrap">
-        "Ya Allah, berkatilah majlis perkahwinan ini, limpahkan baraqah dan
+        Ya Allah, berkatilah majlis perkahwinan ini, limpahkan baraqah dan
         rahmat kepada kedua mempelai ini, Kurniakanlah mereka zuriat yang soleh
         dan solehah. Kekalkanlah jodoh mereka di dunia dan di akhirat dan
-        sempurnakanlah agama mereka dengan berkat ikatan ini."
+        sempurnakanlah agama mereka dengan berkat ikatan ini.
       </p>
     </motion.div>
     // </div>

@@ -38,7 +38,7 @@ function WeddingInfo({}: Props) {
       >
         <p>Dengan penuh kesyukuran kehadrat Illahi,</p>
         <p>kami mempersilakan</p>
-        <p>Dato'/Datin/Dr/Tuan/Puan/Encik/Cik</p>
+        <p>Dato/Datin/Dr/Tuan/Puan/Encik/Cik</p>
         <p>ke walimatulurus anakanda kesayangan kami</p>
       </motion.div>
 
@@ -86,7 +86,7 @@ function WeddingInfo({}: Props) {
           Nur Iqkriany Binti Mohd Wera
         </p>
         <p className="text-xs font-light">
-          Anakanda kepada 'Almarhum' Mohd Wera Bin Darman & Nor Azean Binti Musa
+          Anakanda kepada Almarhum Mohd Wera Bin Darman & Nor Azean Binti Musa
         </p>
       </motion.div>
 
