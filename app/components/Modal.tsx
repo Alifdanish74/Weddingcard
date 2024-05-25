@@ -17,6 +17,7 @@ interface ModalProps {
   onConfirm: (nextModal: string) => void;
   onCancel: () => void;
   isClosing: boolean;
+  isBooked: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onCancel }) => {
@@ -44,7 +45,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
       case 'Money Gift':
         return <ModalComponentMoneyGift />;
       case 'Wishlist':
-        return <ModalComponentWishlist onConfirmBook={onConfirmBook} onCancel={onCancel} isBooked={isBooked} />;
+        return <ModalComponentWishlist onConfirmBook={onConfirmBook} onCancel={onCancel}/>;
       case 'Contact':
         return <ModalComponentContact  />;
       case 'Location':
