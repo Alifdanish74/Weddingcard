@@ -21,7 +21,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ isPlaying, setIsPlaying }) =>
   };
 
   return (
-    <div className='flex -z-1 sticky justify-center content-center top-0 bg-transparent p-2 text-center '>
+    <div className='flex -z-1 sticky justify-center content-center top-0 bg-transparent p-6 pt-10 text-center '>
       <audio
         ref={audioRef}
         src="https://www.kahwinnow.com/storage/music/DU3DX3V6TwSmDSD3TR2E6BgFUDM3Rgss8etiVGUx.mp3"

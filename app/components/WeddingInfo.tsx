@@ -9,7 +9,7 @@ type Props = {};
 
 function WeddingInfo({}: Props) {
   return (
-    <div className="flex flex-col text-black justify-center text-center items-center pt-4 pb-8 bg-card_bg_image">
+    <div className="flex flex-col text-black justify-center text-center items-center pb-8 bg-card_bg_image">
       <motion.div
         initial={{
           y: 100,
@@ -118,9 +118,9 @@ function WeddingInfo({}: Props) {
         <p>
           <b className="text-[#be822b]">Aturan Majlis</b>
         </p>
-        <p> 5:30 PM Majlis Bermula</p>
-        <p> 6:00 PM Ketibaan Pengantin</p>
-        <p className="mb-4">4:00 PM Majlis Berakhir</p>
+        <p> 7:30 PM Majlis Bermula</p>
+        <p> 8:30 PM Ketibaan Pengantin</p>
+        <p className="mb-4">11:00 PM Majlis Berakhir</p>
       </motion.div>
     </div>
   );
