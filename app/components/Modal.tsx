@@ -17,7 +17,6 @@ interface ModalProps {
   onConfirm: (nextModal: string) => void;
   onCancel: () => void;
   isClosing: boolean;
-  isBooked: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onCancel }) => {
