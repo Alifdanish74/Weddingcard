@@ -9,11 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 interface ModalComponentRSVPSlotProps {
   onConfirm: (nextModal: string) => void;
   onCancel: () => void;
+  onGuestbookUpdate: () => void;
 }
 
 const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   onConfirm,
   onCancel,
+  onGuestbookUpdate,
 }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -22,27 +24,6 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [ucapan, setUcapan] = useState("");
   const [timeslot, setTimeSlot] = useState("7:30 PM - 8:30 PM | Saudara-mara");
 
-  //   const handleSubmit = async (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     try {
-  //       const response = await axios.post("~/api/submit-form.api.ts", {
-  //         name,
-  //         phone,
-  //         dewasa,
-  //         kanak,
-  //         timeslot
-  //       });
-  //       console.log(response.data);
-  //       // Reset form after successful submission
-  //       setName("");
-  //       setPhone("");
-  //       setDewasa(1);
-  //       setKanak(0);
-  //       setTimeSlot("7:30 PM - 8:30 PM | Saudara-mara");
-  //     } catch (error) {
-  //       console.error("Error submitting form:", error);
-  //     }
-  //   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const notify = () =>
@@ -88,6 +69,9 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
       setUcapan("");
 
       notify();
+
+      // If form submission is successful, trigger guestbook update in Base component
+      onGuestbookUpdate();
 
       onCancel();
 

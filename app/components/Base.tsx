@@ -16,6 +16,11 @@ import Guestbook from "./Guestbook";
 const Base = () => {
   const [showEntrance, setShowEntrance] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [guestbookUpdated, setGuestbookUpdated] = useState(false);
+
+  const handleGuestbookUpdate = () => {
+    setGuestbookUpdated(true);
+  };
 
   const handleEntranceClose = () => {
     setShowEntrance(false);
@@ -29,7 +34,7 @@ const Base = () => {
       ) : (
         <>
           <section id="navbar" className="z-20">
-            <Navbar />
+            <Navbar onGuestbookUpdate={handleGuestbookUpdate} />
           </section>
 
           <ToastContainer />
@@ -61,7 +66,7 @@ const Base = () => {
               id="guestbook"
               className="container justify-center items-center"
             >
-              <Guestbook />
+              <Guestbook guestbookUpdated={guestbookUpdated} />
             </section>
 
             <section id="border2" className="container py-5">

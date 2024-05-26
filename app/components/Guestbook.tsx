@@ -9,19 +9,39 @@ type UcapanData = {
   ucapan: string;
 };
 
-function Guestbook() {
-  const [ucapanData, setUcapanData] = useState<UcapanData[]>([]);
+interface GuestbookProps {
+  guestbookUpdated: boolean; // Define the type of the prop
+}
 
-  useEffect(() => {
+function Guestbook({ guestbookUpdated }: GuestbookProps) {
+  const [ucapanData, setUcapanData] = useState<UcapanData[]>([]);
+  const [guestbookData, setGuestbookData] = useState([]);
+
+  const fetchGuestbookData = () => {
     fetch("/api/get-ucapan")
       .then((response) => response.json())
       .then((data) => {
-        // Filter out entries with null or empty ucapan
         const filteredData = data.ucapan.filter((entry: UcapanData) => entry.ucapan);
         setUcapanData(filteredData);
       })
       .catch((error) => console.error("Error fetching ucapan:", error));
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchGuestbookData();
+    if (guestbookUpdated) {
+      // Fetch guestbook data when guestbookUpdated changes
+      fetchGuestbookData();
+      console.log('DATA IS FETCHING AFTER FORM SUBMITTED')
+    }
+  }, [guestbookUpdated]);
+
+
+
+    const handleFormSubmission = () => {
+    // After successful RSVP form submission, fetch the latest guestbook data
+    fetchGuestbookData();
+  };
 
   const settings = {
     dots: true,

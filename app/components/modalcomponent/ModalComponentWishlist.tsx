@@ -48,10 +48,6 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
     fetchBookings();
   }, []);
 
-  const handleBookingSubmit = () => {
-    fetchBookings(); // Refresh bookings after a new booking is submitted
-  };
-
   const isItemBooked = (title: string) => {
     return bookings.some((booking) => booking.item === title);
   };

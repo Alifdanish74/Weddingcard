@@ -10,7 +10,11 @@ import { SlLocationPin } from "react-icons/sl";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-export default function Navbar() {
+interface NavbarProps {
+  onGuestbookUpdate: () => void; // Define the type of the prop
+}
+
+export default function Navbar({ onGuestbookUpdate }: NavbarProps) {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [newModal, setNewModal] = useState<string | null>(null); // To track the new modal to be opened
   const [isClosing, setIsClosing] = useState<boolean>(false); // To track if modal is closing
@@ -143,7 +147,8 @@ export default function Navbar() {
         modalType={activeModal || ""}
         onConfirm={handleConfirm}
         onCancel={closeModal}
-        isClosing={isClosing} // Pass closing animation flag to the Modal component
+        isClosing={isClosing}
+        onGuestbookUpdate={onGuestbookUpdate}  // Pass closing animation flag to the Modal component
       />
     </>
   );

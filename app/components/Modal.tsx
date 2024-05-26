@@ -17,9 +17,10 @@ interface ModalProps {
   onConfirm: (nextModal: string) => void;
   onCancel: () => void;
   isClosing: boolean;
+  onGuestbookUpdate: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onCancel }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onCancel, onGuestbookUpdate   }) => {
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -52,7 +53,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
       case 'Calendar':
         return <ModalComponentCalendar/>;
       case 'RSVPSlot': // Add case for Booking modal
-        return <ModalComponentRSVPSlot onConfirm={onConfirm} onCancel={onCancel} />;
+        return <ModalComponentRSVPSlot onConfirm={onConfirm} onCancel={onCancel} onGuestbookUpdate={onGuestbookUpdate} />;
       case 'Booking': // Add case for Booking modal
         return <ModalComponentBooking onConfirm={onConfirm} onCancel={onCancel} title={title} image={image} onBookingSubmit={handleBookingSubmit} />;
       default:
