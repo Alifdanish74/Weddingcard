@@ -10,12 +10,12 @@ interface Booking {
 
 interface ModalComponentWishlistProps {
   onConfirmBook: (nextModal: string, title: string, image: string) => void;
-  onCancel: () => void;
+  shouldFetchBookings: boolean;
+  setShouldFetchBookings: (value: boolean) => void;
 }
 
 const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
-  onConfirmBook,
-  onCancel,
+  onConfirmBook, shouldFetchBookings, setShouldFetchBookings
 }) => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
@@ -39,6 +39,8 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
         }))
       );
       setLoading(false);
+      console.log(data)
+      console.log("fetch wishlist first time")
     } catch (error) {
       console.error("Error fetching bookings:", error);
     }
@@ -47,6 +49,14 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
   useEffect(() => {
     fetchBookings();
   }, []);
+
+  useEffect(() => {
+    if (shouldFetchBookings) {
+      console.log("shouldFetchBooking is triggered")
+      fetchBookings();
+      setShouldFetchBookings(false);
+    }
+  }, [shouldFetchBookings, setShouldFetchBookings]);
 
   const isItemBooked = (title: string) => {
     return bookings.some((booking) => booking.item === title);
@@ -62,32 +72,51 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
 
   return (
     <>
-      <div className="flex flex-col mb-5 min-h-[66vh]">
+      <div className="flex flex-col mb-5 max-h-[66vh]">
         <h2 className="text-lg mb-4 text-center font-bold text-gray-500">
           Wishlist
         </h2>
+        <div className="overflow-y-auto overflow-hidden max-h-[60vh]">
+          {/* Item 1 */}
+          <ProductCard
+            imageSrc="/microwave.jpeg"
+            title="SHARP Microwave Oven 20L R207EK"
+            itemLink="https://shopee.com.my/SHARP-Microwave-Oven-20L-R207EK-R219EK-R2021GK-Mechanical-Dial-Flatbed-R2121FGK-i.19134170.23860216391?sp_atk=439c3212-4d92-43b2-87ae-ea502bd8749b&xptdk=439c3212-4d92-43b2-87ae-ea502bd8749b"
+            onConfirmBook={onConfirmBook}
+            isBooked={isItemBooked("SHARP Microwave Oven 20L R207EK")}
+          />
 
-        {/* Item 1 */}
-        <ProductCard
-          imageSrc="/microwave.jpeg"
-          title="SHARP Microwave Oven 20L R207EK"
-          itemLink="https://shopee.com.my/SHARP-Microwave-Oven-20L-R207EK-R219EK-R2021GK-Mechanical-Dial-Flatbed-R2121FGK-i.19134170.23860216391?sp_atk=439c3212-4d92-43b2-87ae-ea502bd8749b&xptdk=439c3212-4d92-43b2-87ae-ea502bd8749b"
-          onConfirmBook={onConfirmBook}
-          isBooked={isItemBooked("SHARP Microwave Oven 20L R207EK")}
-        />
+          {/* Item 2 */}
+          <ProductCard
+            imageSrc="/vacuum.jpeg"
+            title="PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro"
+            itemLink="https://shopee.com.my/PerySmith-Cordless-Vacuum-Cleaner-Xtreme-Series-X20-Pro-i.130925376.4116947223?sp_atk=9479ea04-db53-4978-b5b5-a6f37b541c0e&xptdk=9479ea04-db53-4978-b5b5-a6f37b541c0e"
+            onConfirmBook={onConfirmBook}
+            isBooked={isItemBooked(
+              "PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro"
+            )}
+          />
 
-        {/* Item 2 */}
-        <ProductCard
-          imageSrc="/vacuum.jpeg"
-          title="PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro"
-          itemLink="https://shopee.com.my/PerySmith-Cordless-Vacuum-Cleaner-Xtreme-Series-X20-Pro-i.130925376.4116947223?sp_atk=9479ea04-db53-4978-b5b5-a6f37b541c0e&xptdk=9479ea04-db53-4978-b5b5-a6f37b541c0e"
-          onConfirmBook={onConfirmBook}
-          isBooked={isItemBooked(
-            "PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro"
-          )}
-        />
+          {/* Item 3 */}
+          <ProductCard
+            imageSrc="/dessini.jpeg"
+            title="DESSINI ITALY WSB-23-S Cookware Set"
+            itemLink="https://shopee.com.my/DESSINI-ITALY-WSB-23-S-Die-Cast-Aluminium-Non-Stick-Casserole-Pot-Bowl-Double-Side-Grill-Pan-Cookware-PERIUK-(23-Pcs)-i.370480745.19409535277?xptdk=1cd6ff1d-a7f0-44db-9844-85848e8b8181"
+            onConfirmBook={onConfirmBook}
+            isBooked={isItemBooked("DESSINI ITALY WSB-23-S Cookware Set")}
+          />
 
-        {/* Item 3 */}
+          {/* Item 4 */}
+          <ProductCard
+            imageSrc="/kettle.jpeg"
+            title="DESSINI ITALY Glass Electric Kettle Temperature Control"
+            itemLink="https://shopee.com.my/DESSINI-ITALY-Glass-Electric-Kettle-Temperature-Control-Automatic-Cut-Off-Boiler-Jug-Teapot-Cerek-(1.8L-1.1L)-i.370480745.11400243932?sp_atk=e4242e7b-1797-4433-acd5-3de1ab00ffbf&xptdk=e4242e7b-1797-4433-acd5-3de1ab00ffbf"
+            onConfirmBook={onConfirmBook}
+            isBooked={isItemBooked(
+              "DESSINI ITALY Glass Electric Kettle Temperature Control"
+            )}
+          />
+        </div>
       </div>
     </>
   );

@@ -7,19 +7,17 @@ import Image from "next/image";
 import "react-toastify/dist/ReactToastify.css";
 
 interface ModalComponentBookingProps {
-  onConfirm: (nextModal: string) => void;
   onCancel: () => void;
   title: string; // New prop
   image: string;
-  onBookingSubmit: () => void; // New prop
+  onBookingSubmit: () => void;
 }
 
 const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
-  onConfirm,
   onCancel,
   title,
-  image, // New prop
-  onBookingSubmit // New prop
+  image,
+  onBookingSubmit  // New prop
 }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -60,8 +58,8 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
       setPhone("");
       setItem(title);
       notify();
+      onBookingSubmit();
       onCancel();
-      onBookingSubmit(); // Notify parent about the successful booking
 
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -135,6 +133,7 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
               <input
                 type="text"
                 id="item"
+                readOnly
                 value={item}
                 onChange={(e) => setItem(title)}
                 className="w-full p-1 border border-gray-300 rounded-md"

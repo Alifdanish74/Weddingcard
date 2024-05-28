@@ -18,7 +18,7 @@ const ProductCard: FC<ProductCardProps> = ({
   title,
   itemLink,
   onConfirmBook,
-  isBooked
+  isBooked,
 }) => {
   return (
     <div className="flex items-center border rounded-lg p-4 my-2 bg-white shadow-md">

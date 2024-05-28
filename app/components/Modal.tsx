@@ -24,7 +24,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
-  const [isBooked, setIsBooked] = useState(false);
+  // const [isBooked, setIsBooked] = useState(false);
+  const [shouldFetchBookings, setShouldFetchBookings] = useState(false);
 
   const onConfirmBook = (nextModal: string, title: string, image: string) => {
     setTitle(title);
@@ -33,8 +34,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
   };
 
   const handleBookingSubmit = () => {
-    setIsBooked(true);
-    onCancel();
+    setShouldFetchBookings(true);
+    console.log ("FetchBooking is set to true");
   };
 
 
@@ -45,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
       case 'Money Gift':
         return <ModalComponentMoneyGift />;
       case 'Wishlist':
-        return <ModalComponentWishlist onConfirmBook={onConfirmBook} onCancel={onCancel}/>;
+        return <ModalComponentWishlist onConfirmBook={onConfirmBook} shouldFetchBookings={shouldFetchBookings} setShouldFetchBookings={setShouldFetchBookings} />;
       case 'Contact':
         return <ModalComponentContact  />;
       case 'Location':
@@ -55,7 +56,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
       case 'RSVPSlot': // Add case for Booking modal
         return <ModalComponentRSVPSlot onConfirm={onConfirm} onCancel={onCancel} onGuestbookUpdate={onGuestbookUpdate} />;
       case 'Booking': // Add case for Booking modal
-        return <ModalComponentBooking onConfirm={onConfirm} onCancel={onCancel} title={title} image={image} onBookingSubmit={handleBookingSubmit} />;
+        return <ModalComponentBooking onCancel={onCancel} title={title} image={image} onBookingSubmit={handleBookingSubmit}/>;
       default:
         return null;
     }
