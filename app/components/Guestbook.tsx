@@ -18,10 +18,19 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
   const [guestbookData, setGuestbookData] = useState([]);
 
   const fetchGuestbookData = () => {
-    fetch("/api/get-ucapan")
+    fetch("/api/get-ucapan", {
+      method: "GET",
+      headers: {
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
-        const filteredData = data.ucapan.filter((entry: UcapanData) => entry.ucapan);
+        const filteredData = data.ucapan.filter(
+          (entry: UcapanData) => entry.ucapan
+        );
         setUcapanData(filteredData);
       })
       .catch((error) => console.error("Error fetching ucapan:", error));
@@ -32,13 +41,11 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
     if (guestbookUpdated) {
       // Fetch guestbook data when guestbookUpdated changes
       fetchGuestbookData();
-      console.log('DATA IS FETCHING AFTER FORM SUBMITTED')
+      console.log("DATA IS FETCHING AFTER FORM SUBMITTED");
     }
   }, [guestbookUpdated]);
 
-
-
-    const handleFormSubmission = () => {
+  const handleFormSubmission = () => {
     // After successful RSVP form submission, fetch the latest guestbook data
     fetchGuestbookData();
   };

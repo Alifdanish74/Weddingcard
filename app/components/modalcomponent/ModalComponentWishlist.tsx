@@ -29,7 +29,14 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
 
   const fetchBookings = async () => {
     try {
-      const response = await fetch("/api/get-booking");
+      const response = await fetch("/api/get-booking", {
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        },
+      });
       const data = await response.json();
       setBookings(
         data.bookings.map((booking: any) => ({
