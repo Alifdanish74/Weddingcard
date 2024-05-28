@@ -3,6 +3,8 @@ import { google } from 'googleapis';
 
 export async function GET(req: NextRequest) {
   try {
+    console.log("Fetching bookings...");
+
     // prepare auth
     const auth = new google.auth.GoogleAuth({
       credentials: {
@@ -21,21 +23,30 @@ export async function GET(req: NextRequest) {
       version: "v4",
     });
 
+    console.log("Calling Google Sheets API...");
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
       range: "Sheet1!H:J",
     });
 
     const bookings = response.data.values || [];
+    console.log("Bookings fetched:", bookings);
 
-    return NextResponse.json({ bookings });
+    return NextResponse.json({ bookings }, {
+      headers: {
+        'Cache-Control': 'no-store',
+      }
+    });
 
   } catch (e) {
-    console.error(e);
+    console.error("Error fetching bookings:", e);
     return NextResponse.json({
       message: 'Something went wrong'
     }, {
       status: 500,
+      headers: {
+        'Cache-Control': 'no-store',
+      }
     });
   }
 }

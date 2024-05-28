@@ -47,7 +47,6 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
       );
       setLoading(false);
       console.log(data)
-      console.log("fetch wishlist first time")
     } catch (error) {
       console.error("Error fetching bookings:", error);
     }
