@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { google } from 'googleapis';
+import { NextRequest, NextResponse } from "next/server";
+import { google } from "googleapis";
 
 type SheetForm = {
   name: string;
@@ -8,7 +8,7 @@ type SheetForm = {
 };
 
 export async function POST(req: NextRequest) {
-  const body = await req.json() as SheetForm;
+  const body = (await req.json()) as SheetForm;
 
   try {
     // prepare auth
@@ -34,22 +34,34 @@ export async function POST(req: NextRequest) {
       range: "Sheet1!H:J",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [
-          [body.name, body.phone, body.item],
-        ],
+        values: [[body.name, body.phone, body.item]],
       },
     });
 
-    return NextResponse.json({
-      data: response.data,
-    });
-
+    return NextResponse.json(
+      {
+        data: response.data,
+      },
+      {
+        headers: {
+          "Cache-Control":
+            "no-store, no-cache, must-revalidate, proxy-revalidate",
+          Pragma: "no-cache",
+          Expires: "0",
+        },
+      }
+    );
   } catch (e) {
     console.error(e);
     return NextResponse.json({
       message: 'Something went wrong'
     }, {
       status: 500,
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      }
     });
   }
 }
