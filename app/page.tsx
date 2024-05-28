@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Base from "./components/Base";
 import { BeatLoader } from "react-spinners";
 import Head from "next/head";
-import FrontPage from "./components/FrontPage";
 import Content from "./components/Content";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
