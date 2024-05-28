@@ -1,9 +1,13 @@
 // components/Modal.js
 'use client'
 import React, { useState } from "react";
+import dynamic from 'next/dynamic';
 import ModalComponentRSVP from "./modalcomponent/ModalComponentRSVP";
 import ModalComponentMoneyGift from "./modalcomponent/ModalComponentMoneyGift";
-import ModalComponentWishlist from "./modalcomponent/ModalComponentWishlist";
+// import ModalComponentWishlist from "./modalcomponent/ModalComponentWishlist";
+const DynamicModalComponentWishlist = dynamic(() => import('./modalcomponent/ModalComponentWishlist'), {
+  ssr: false // Disable server-side rendering
+});
 import ModalComponentContact from "./modalcomponent/ModalComponentContact";
 import ModalComponentLocation from "./modalcomponent/ModalComponentLocation";
 import ModalComponentCalendar from "./modalcomponent/ModalComponentCalendar";
@@ -46,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
       case 'Money Gift':
         return <ModalComponentMoneyGift />;
       case 'Wishlist':
-        return <ModalComponentWishlist onConfirmBook={onConfirmBook} shouldFetchBookings={shouldFetchBookings} setShouldFetchBookings={setShouldFetchBookings} />;
+        return <DynamicModalComponentWishlist onConfirmBook={onConfirmBook} shouldFetchBookings={shouldFetchBookings} setShouldFetchBookings={setShouldFetchBookings} />;
       case 'Contact':
         return <ModalComponentContact  />;
       case 'Location':
