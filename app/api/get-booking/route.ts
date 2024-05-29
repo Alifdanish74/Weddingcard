@@ -34,7 +34,10 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ bookings }, {
       headers: {
-        'Cache-Control': 'no-store',
+        "Cache-Control":
+        "no-store, no-cache, must-revalidate, proxy-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
       }
     });
 
@@ -45,7 +48,9 @@ export async function GET(req: NextRequest) {
     }, {
       status: 500,
       headers: {
-        'Cache-Control': 'no-store',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
       }
     });
   }
