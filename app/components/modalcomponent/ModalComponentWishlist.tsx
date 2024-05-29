@@ -55,8 +55,8 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
             bookings={bookings}
           />
 
-{/* Item 2 */}
-<ProductCard
+          {/* Item 2 */}
+          <ProductCard
             imageSrc="/vacuum.jpeg"
             title="PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro"
             itemLink="https://shopee.com.my/PerySmith-Cordless-Vacuum-Cleaner-Xtreme-Series-X20-Pro-i.130925376.4116947223?sp_atk=9479ea04-db53-4978-b5b5-a6f37b541c0e&xptdk=9479ea04-db53-4978-b5b5-a6f37b541c0e"
@@ -89,3 +89,6 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
 };
 
 export default ModalComponentWishlist;
+
+// Add the following line to revalidate data after a form submission
+export const revalidatePath = '/api/get-booking';

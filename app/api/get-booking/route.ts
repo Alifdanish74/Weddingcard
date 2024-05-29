@@ -1,4 +1,3 @@
-// api/get-booking.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
@@ -35,10 +34,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ bookings }, {
       headers: {
-        "Cache-Control":
-        "no-store, no-cache, must-revalidate, proxy-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
+        "Cache-Control": "no-store, max-age=0" // Disable caching
       }
     });
 
@@ -49,9 +45,7 @@ export async function GET(req: NextRequest) {
     }, {
       status: 500,
       headers: {
-        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
+        'Cache-Control': 'no-store, max-age=0' // Disable caching
       }
     });
   }
