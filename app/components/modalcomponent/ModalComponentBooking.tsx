@@ -1,4 +1,3 @@
-// components/ModalComponentBooking.tsx
 import { useState } from "react";
 import axios from "axios";
 import { IoIosSend } from "react-icons/io";
@@ -9,14 +8,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 interface ModalComponentBookingProps {
   onCancel: () => void;
-  title: string;
+  title: string; // New prop
   image: string;
 }
 
 const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
   onCancel,
   title,
-  image,
+  image, // New prop
 }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -52,14 +51,13 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
       }
 
       const content = await response.json();
+      console.log ("hehehe");
 
       setName("");
       setPhone("");
       setItem(title);
       notify();
       onCancel();
-      // Re-fetch bookings after form submission
-      window.location.reload(); // This forces a re-render of the ProductCard component
 
     } catch (error) {
       console.error("Error submitting form:", error);

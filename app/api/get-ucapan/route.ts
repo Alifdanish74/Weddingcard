@@ -1,10 +1,9 @@
-// api/get-ucapan.ts
+// app/api/get-ucapan/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
 export async function GET(req: NextRequest) {
   try {
-    // prepare auth
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.CLIENT_EMAIL,
@@ -40,9 +39,14 @@ export async function GET(req: NextRequest) {
       ucapan: row[5],
     }));
 
-    return NextResponse.json({
+    const res = NextResponse.json({
       ucapan: ucapanData,
     });
+    res.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.headers.set('Pragma', 'no-cache');
+    res.headers.set('Expires', '0');
+
+    return res;
 
   } catch (e) {
     console.error(e);

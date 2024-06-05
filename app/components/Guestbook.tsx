@@ -10,12 +10,11 @@ type UcapanData = {
 };
 
 interface GuestbookProps {
-  guestbookUpdated: boolean; // Define the type of the prop
+  guestbookUpdated: boolean;
 }
 
 function Guestbook({ guestbookUpdated }: GuestbookProps) {
   const [ucapanData, setUcapanData] = useState<UcapanData[]>([]);
-  const [guestbookData, setGuestbookData] = useState([]);
 
   const fetchGuestbookData = () => {
     fetch("/api/get-ucapan", {
@@ -39,20 +38,13 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
   useEffect(() => {
     fetchGuestbookData();
     if (guestbookUpdated) {
-      // Fetch guestbook data when guestbookUpdated changes
       fetchGuestbookData();
       console.log("DATA IS FETCHING AFTER FORM SUBMITTED");
     }
   }, [guestbookUpdated]);
 
-  const handleFormSubmission = () => {
-    // After successful RSVP form submission, fetch the latest guestbook data
-    fetchGuestbookData();
-  };
-
   const settings = {
     dots: true,
-    arrow: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,

@@ -1,3 +1,4 @@
+// components/ProductCard.tsx
 import Image from "next/image";
 import { FiLink } from "react-icons/fi";
 import { FaRegBookmark } from "react-icons/fa";
@@ -9,7 +10,7 @@ interface ProductCardProps {
   title: string;
   itemLink: string;
   onConfirmBook: (nextModal: string, title: string, image: string) => void;
-  bookings: string[];
+  isBooked: boolean; // New prop
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -17,10 +18,8 @@ const ProductCard: FC<ProductCardProps> = ({
   title,
   itemLink,
   onConfirmBook,
-  bookings,
+  isBooked,
 }) => {
-  const isBooked = bookings.includes(title);
-
   return (
     <div className="flex items-center border rounded-lg p-4 my-2 bg-white shadow-md">
       <div className="flex-shrink-0 mr-4">
@@ -37,25 +36,27 @@ const ProductCard: FC<ProductCardProps> = ({
           {title}
         </h3>
         <div className="mt-4 flex space-x-4 text-sm font-semibold justify-center items-center">
-          <button className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
-            <a
-              href={itemLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center"
-            >
-              <FiLink className="mr-2" />
-              Link
-            </a>
-          </button>
           {!isBooked ? (
-            <button
-              onClick={() => onConfirmBook("Booking", title, imageSrc)}
-              className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
-            >
-              <FaRegBookmark className="mr-2" />
-              Tempah
-            </button>
+            <>
+              <button className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
+                <a
+                  href={itemLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center"
+                >
+                  <FiLink className="mr-2" />
+                  Link
+                </a>
+              </button>
+              <button
+                onClick={() => onConfirmBook("Booking", title, imageSrc)}
+                className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+              >
+                <FaRegBookmark className="mr-2" />
+                Tempah
+              </button>
+            </>
           ) : (
             <button className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
               <SiTicktick className="mr-2" />
