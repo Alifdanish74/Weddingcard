@@ -16,12 +16,11 @@ interface GuestbookProps {
 function Guestbook({ guestbookUpdated }: GuestbookProps) {
   const [ucapanData, setUcapanData] = useState<UcapanData[]>([]);
 
-  const fetchGuestbookData = () => {
-    fetch("/api/get-ucapan", {
+  const fetchGuestbookData = async () => {
+    await fetch("/api/get-ucapan", {
       method: "GET",
       headers: {
         "Cache-Control": "no-cache",
-        Pragma: "no-cache",
         Expires: "0",
       },
     })
@@ -34,6 +33,32 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
       })
       .catch((error) => console.error("Error fetching ucapan:", error));
   };
+
+  //test
+  // const getUcapan = async () => {
+  //   try {
+  //     const res = await fetch("/api/get-ucapan", {
+  //       cache: "no-cache",
+  //       // next: {revalidate: 1}
+  //     })
+  //     .then((data) => {
+  //       const filteredData = data.ucapan.filter(
+  //         (entry: UcapanData) => entry.ucapan
+  //       );
+  //       setUcapanData(filteredData);
+  //     })
+
+  //     if (!res.ok) {
+  //       throw new Error("Failed to fetch data");
+  //     }
+
+  //     return res.json();
+  //   } catch (error) {
+  //     console.log("Error loading topics:", error);
+  //     return { topics: [] };
+  //   }
+  // };
+  //test
 
   useEffect(() => {
     fetchGuestbookData();

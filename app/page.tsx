@@ -7,7 +7,6 @@ import Content from "./components/Content";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export const runtime = 'edge'
-// export const fetchCache = 'force-no-store'
 
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
