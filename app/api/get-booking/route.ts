@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
     }, {
       status: 500,
       headers: {
-        'Cache-Control': 'no-store, max-age=0' // Disable caching
+        'Cache-Control': 'no-cache, max-age=0' // Disable caching
       }
     });
   }
