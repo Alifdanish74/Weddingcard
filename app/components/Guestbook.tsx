@@ -14,6 +14,8 @@ interface GuestbookProps {
   guestbookUpdated: boolean;
 }
 
+export const dynamic = 'force-dynamic';
+
 function Guestbook({ guestbookUpdated }: GuestbookProps) {
   const [ucapanData, setUcapanData] = useState<UcapanData[]>([]);
 

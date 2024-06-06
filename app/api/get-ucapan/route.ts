@@ -2,7 +2,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
-export async function GET(req: NextRequest) {
+export const dynamic = 'force-dynamic';
+
+export const GET = async (req: NextRequest) => {
   try {
     const auth = new google.auth.GoogleAuth({
       credentials: {
