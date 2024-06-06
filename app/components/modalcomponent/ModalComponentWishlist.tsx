@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { BeatLoader } from "react-spinners";
 
+export const dynamic = 'force-dynamic';
+
 interface Booking {
   name: string;
   phone: string;
