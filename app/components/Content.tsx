@@ -30,7 +30,7 @@ function Content({}: Props) {
         >
           Alif Danish
         </motion.p>
-        <motion.button
+        <motion.p
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 1 }}
@@ -41,7 +41,7 @@ function Content({}: Props) {
         >
           {" "}
           &{" "}
-        </motion.button>
+        </motion.p>
         <motion.p
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}

@@ -118,9 +118,9 @@ function WeddingInfo({}: Props) {
         <p>
           <b className="text-[#be822b]">Aturan Majlis</b>
         </p>
-        <p> 7:30 PM Majlis Bermula</p>
-        <p> 8:30 PM Ketibaan Pengantin</p>
-        <p className="mb-4">11:00 PM Majlis Berakhir</p>
+        <p> 7:30 PM - Majlis Bermula</p>
+        <p> 8:30 PM - Ketibaan Pengantin</p>
+        <p className="mb-4">11:00 PM - Majlis Berakhir</p>
       </motion.div>
     </div>
   );

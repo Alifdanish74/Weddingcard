@@ -5,6 +5,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import Image from "next/image";
 import "react-toastify/dist/ReactToastify.css";
+import { BeatLoader } from "react-spinners";
 
 interface ModalComponentBookingProps {
   onCancel: () => void;
@@ -20,10 +21,11 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [item, setItem] = useState(title);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true);
     const notify = () =>
       toast.success("Your booking has been submitted", {
         autoClose: 1800,
@@ -58,6 +60,7 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
       setItem(title);
       notify();
       onCancel();
+      setLoading(false);
 
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -139,6 +142,14 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
               />
             </div>
             <div className="mt-4 flex space-x-4 text-sm font-semibold justify-center items-center">
+            {loading ? (
+              <button
+                className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+                disabled
+              >
+                <BeatLoader color={"#123abc"} loading={loading} size={10} />
+              </button>
+            ) : (
               <button
                 type="submit"
                 className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
@@ -146,6 +157,7 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
                 <IoIosSend className="mr-2" />
                 Submit
               </button>
+            )}
               <button
                 onClick={onCancel}
                 className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"

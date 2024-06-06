@@ -69,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
       onClick={onClose}
     >
       <div
-        className={`bg-white p-4 rounded-t-xl shadow-lg pb-14 w-full max-w-[420px] mx-auto transition-transform duration-300 transform ${
+        className={`bg-white p-4 rounded-t-xl shadow-lg pb-14 w-full max-w-[400px] mx-auto transition-transform duration-300 transform ${
           isOpen ? "translate-y-0" : "translate-y-full"
         }`}
         onClick={(e) => e.stopPropagation()}

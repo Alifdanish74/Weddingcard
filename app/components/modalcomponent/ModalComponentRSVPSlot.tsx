@@ -1,8 +1,8 @@
 // components/ModalComponentRSVPSlot.js
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { IoIosSend } from "react-icons/io";
 import { MdOutlineCancel } from "react-icons/md";
+import { BeatLoader } from "react-spinners";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,9 +22,19 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [kanak, setKanak] = useState(0);
   const [ucapan, setUcapan] = useState("");
   const [timeslot, setTimeSlot] = useState("7:30 PM - 8:30 PM | Saudara-mara");
+  const [loading, setLoading] = useState(false);
+
+  // // Simulate a data fetch or some async operation
+  // useEffect(() => {
+  //   // Simulate a delay to showcase the spinner
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 400); // Adjust the delay as needed
+  // }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     const notify = () =>
       toast.success("Your RSVP has been submitted", {
         autoClose: 1800,
@@ -66,6 +76,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
       setKanak(0);
       setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara");
       setUcapan("");
+      setLoading(false);
 
       notify();
 
@@ -221,13 +232,23 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
             Submit
           </button> */}
           <div className="mt-4 flex space-x-4 text-sm font-semibold justify-center items-center">
-            <button
-              type="submit"
-              className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
-            >
-              <IoIosSend className="mr-2" />
-              Submit
-            </button>
+          {loading ? (
+              <button
+                className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+                disabled
+              >
+                <BeatLoader color={"#123abc"} loading={loading} size={10} />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+              >
+                <IoIosSend className="mr-2" />
+                Submit
+              </button>
+            )}
+ 
             <button
               onClick={onCancel}
               className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
