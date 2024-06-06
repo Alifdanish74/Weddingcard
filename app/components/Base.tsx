@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import Content from "../components/Content";
+import Content from "./Content";
 import WeddingInfo from "./WeddingInfo";
 import AudioPlayer from "./audioplayer/AudioPlayer";
 import { Border } from "./svgs";
