@@ -9,7 +9,7 @@ type Props = {};
 
 function WeddingInfo({}: Props) {
   return (
-    <div className="flex flex-col text-black justify-center text-center items-center pb-8 bg-card_bg_image">
+    <div className="flex flex-col text-black justify-center px-3 text-center items-center pb-8 bg-card_bg_image">
       <motion.div
         initial={{
           y: 100,

@@ -66,7 +66,7 @@ export default function Navbar({ onGuestbookUpdate }: NavbarProps) {
         transition={{ duration: 0.6 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="fixed w-full max-w-[420px] text-black bottom-0 flex flex-col justify-center z-50 min-h-16"
+        className="fixed w-full max-w-[400px] text-black bottom-0 flex flex-col justify-center z-50 min-h-16"
       >
         {/* Navbar */}
         <div id="buttondiv" className="main-div bg-white w-full border-t border-gray-200 rounded-t-3xl text-[10px] font-medium flex flex-wrap justify-around items-center p-2 min-h-16">

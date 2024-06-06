@@ -7,7 +7,7 @@ type Props = {};
 
 function Content({}: Props) {
   return (
-    <div className="flex flex-col z-10 pb-10 pt-20 text-center h-screen main-card text-black justify-center items-center bg-main_bg_image">
+    <div className="flex flex-col z-10 pb-14 text-center h-screen main-card text-black justify-center items-center bg-main_bg_image">
       <motion.div
         initial={{
           y: -30,

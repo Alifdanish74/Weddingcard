@@ -13,7 +13,6 @@ interface ModalComponentRSVPSlotProps {
 }
 
 const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
-  onConfirm,
   onCancel,
   onGuestbookUpdate,
 }) => {
@@ -65,7 +64,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
       setPhone("");
       setDewasa(1);
       setKanak(0);
-      setTimeSlot("7:30 PM - 8:30 PM | Saudara-mara");
+      setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara");
       setUcapan("");
 
       notify();
@@ -145,9 +144,8 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
               className="w-full p-1 border border-gray-300 rounded-md"
             >
               {[
-                "7:30 PM - 8:30 PM | Saudara-mara",
-                "8:30 PM - 9:00 PM | Jiran tetangga",
-                "9:00 PM - 9:30 PM | Rakan-rakan",
+                "7:30 PM - 9:00 PM | Saudara-mara",
+                "9:00 PM - 11:00 PM | Rakan-rakan",
               ].map((time) => (
                 <option key={time} value={time}>
                   {time}

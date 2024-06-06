@@ -7,11 +7,12 @@ import { Border } from "./svgs";
 import Navbar from "./Navbar";
 import Countdown from "./Countdown";
 import Doa from "./Doa";
-import Imgprayer from "../assets/bg-prayer.png";
-import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import Entrance from "./Entrance";
 import Guestbook from "./Guestbook";
+import Footerlogo from "./Footerlogo";
+import Lebihlanjut from "./Lebihlanjut";
+import Footer from "./Footer";
 
 const Base = () => {
   const [showEntrance, setShowEntrance] = useState(true);
@@ -36,14 +37,11 @@ const Base = () => {
           <section id="navbar" className="z-20">
             <Navbar onGuestbookUpdate={handleGuestbookUpdate} />
           </section>
-
           <ToastContainer />
           <section id="content">
             <Content />
           </section>
-
           <AudioPlayer isPlaying={isPlaying} setIsPlaying={setIsPlaying} />{" "}
-
           {/* Pass isPlaying and setIsPlaying as props */}
           <div className="bg-card_bg_image pb-16">
             <section id="weddinginfo" className="container mx-auto">
@@ -84,14 +82,9 @@ const Base = () => {
               <Border className="pl-5 pr-5 w-full h-5 container" />
             </section>
 
-            <footer
-              id="hashtag"
-              className="flex content-center justify-center container pt-5 pb-10"
-            >
-              <h1 className="text-black font-[gormorant] text-xl">
-                #DANISH & IQKRIANY
-              </h1>
-            </footer>
+            <section id="footer" className="container py-5">
+              <Footer />
+            </section>
           </div>
         </>
       )}
