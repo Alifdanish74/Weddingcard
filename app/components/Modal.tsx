@@ -9,6 +9,8 @@ import ModalComponentLocation from "./modalcomponent/ModalComponentLocation";
 import ModalComponentCalendar from "./modalcomponent/ModalComponentCalendar";
 import ModalComponentBooking from "./modalcomponent/ModalComponentBooking";
 import ModalComponentRSVPSlot from "./modalcomponent/ModalComponentRSVPSlot";
+import ModalComponentRSVPSlotTidakHadir from "./modalcomponent/ModalComponentRSVPSlotTidakHadir";
+
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,11 +18,12 @@ interface ModalProps {
   modalType: string; // Added prop to specify which modal component to render
   onConfirm: (nextModal: string) => void;
   onCancel: () => void;
+  onTidakHadir: (nextModal: string) => void;
   isClosing: boolean;
   onGuestbookUpdate: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onCancel, onGuestbookUpdate   }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onTidakHadir, onCancel, onGuestbookUpdate   }) => {
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -41,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
   const renderModalContent = () => {
     switch (modalType) {
       case 'RSVP':
-        return <ModalComponentRSVP onConfirm={onConfirm} onCancel={onCancel} />;
+        return <ModalComponentRSVP onConfirm={onConfirm} onCancel={onTidakHadir} />;
       case 'Money Gift':
         return <ModalComponentMoneyGift />;
       case 'Wishlist':
@@ -54,6 +57,8 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
         return <ModalComponentCalendar/>;
       case 'RSVPSlot': // Add case for Booking modal
         return <ModalComponentRSVPSlot onConfirm={onConfirm} onCancel={onCancel} onGuestbookUpdate={onGuestbookUpdate} />;
+      case 'RSVPTidakHadir': // Add case for Booking modal
+        return <ModalComponentRSVPSlotTidakHadir onConfirm={onConfirm} onCancel={onCancel} onGuestbookUpdate={onGuestbookUpdate} />;
       case 'Booking': // Add case for Booking modal
         return <ModalComponentBooking onCancel={onCancel} title={title} image={image}/>;
       default:

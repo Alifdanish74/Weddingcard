@@ -11,7 +11,7 @@ class CalendarComponent extends React.Component {
       theme: "glass",
       weekdayType: "long-upper",
       monthDisplayType: "long",
-      calendarSize: "large",
+      calendarSize: "small",
       headerColor: "black",
       headerBackgroundColor: "grey",
       

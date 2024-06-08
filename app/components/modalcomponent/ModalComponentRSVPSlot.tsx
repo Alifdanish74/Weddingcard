@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { IoIosSend } from "react-icons/io";
 import { MdOutlineCancel } from "react-icons/md";
-import { BeatLoader } from "react-spinners";
+import { CircleLoader } from "react-spinners";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,15 +22,8 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [kanak, setKanak] = useState(0);
   const [ucapan, setUcapan] = useState("");
   const [timeslot, setTimeSlot] = useState("7:30 PM - 8:30 PM | Saudara-mara");
+  const [status, setStatus] = useState("Hadir");
   const [loading, setLoading] = useState(false);
-
-  // // Simulate a data fetch or some async operation
-  // useEffect(() => {
-  //   // Simulate a delay to showcase the spinner
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 400); // Adjust the delay as needed
-  // }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,6 +42,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
         kanak,
         timeslot,
         ucapan,
+        status
       };
 
       const response = await fetch("/api/submit-form", {
@@ -68,14 +62,13 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
 
       console.log(content);
 
-      // alert(content.data.tableRange);
-
       setName("");
       setPhone("");
       setDewasa(1);
       setKanak(0);
       setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara");
       setUcapan("");
+      setStatus("Hadir");
       setLoading(false);
 
       notify();
@@ -93,8 +86,8 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
 
   return (
     <>
-      <div className="flex flex-col mb-5 min-h-[75vh]">
-        <h2 className="text-lg text-center mb-4 font-bold text-gray-500">
+      <div className="flex flex-col mb-2 min-h-[66vh]">
+        <h2 className="text-lg text-center mb-1 font-bold text-gray-500">
           RSVP
         </h2>
 
@@ -121,6 +114,18 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
             />
           </div>
           {/* Name end */}
+          {/* Status start */}
+          <div>
+            <input
+              type="hidden"
+              id="status"
+              value={status}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-1 border border-gray-300 rounded-md"
+              required
+            />
+          </div>
+          {/* Status end */}
 
           {/* Phone number start */}
           <div className="mb-2">
@@ -231,13 +236,13 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
           >
             Submit
           </button> */}
-          <div className="mt-4 flex space-x-4 text-sm font-semibold justify-center items-center">
+          <div className=" flex space-x-4 text-sm font-semibold justify-center items-center">
           {loading ? (
               <button
                 className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
                 disabled
               >
-                <BeatLoader color={"#123abc"} loading={loading} size={10} />
+                <CircleLoader color={"#123abc"} loading={loading} size={10} />
               </button>
             ) : (
               <button

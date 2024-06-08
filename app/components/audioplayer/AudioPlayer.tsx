@@ -20,11 +20,27 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ isPlaying, setIsPlaying }) =>
     }
   };
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        audioRef.current?.pause();
+      } else if (isPlaying) {
+        audioRef.current?.play();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [isPlaying]);
+
   return (
     <div className='flex -z-1 sticky justify-center content-center top-0 bg-transparent p-6 pt-10 text-center '>
       <audio
         ref={audioRef}
-        src="https://www.kahwinnow.com/storage/music/DU3DX3V6TwSmDSD3TR2E6BgFUDM3Rgss8etiVGUx.mp3"
+        src="/kisahcintakita.mp3"
         controlsList="nodownload"
         loop
         className='hidden'
@@ -32,9 +48,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ isPlaying, setIsPlaying }) =>
       />
       <button id='music-btn' className='text-black font-bold py-2 px-4 bg-gray-100 rounded-full flex' onClick={togglePlay}>
         <div className="music-player play text-blue-700">
-          {isPlaying ? <FaRegPlayCircle /> : <FaRegCirclePause />}
+          {isPlaying ? <FaRegCirclePause /> : <FaRegPlayCircle />}
         </div>
-        <span className='text-xs ml-2 text-left whitespace-nowrap overflow-hidden text-ellipsis'>A Thousand Years - Christina Perri (Instrumental)</span>
+        <span className='text-xs ml-2 text-left whitespace-nowrap overflow-hidden text-ellipsis'>Kisah Cinta Kita - Hafiz Suip (Instrumental)</span>
       </button>
     </div>
   );

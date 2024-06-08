@@ -23,6 +23,7 @@ const HomePage = () => {
       <Head>
         <title>Home Page</title>
         <link rel="icon" href="/favicon.ico" />
+        
       </Head>
       <ToastContainer />
       {loading ? (

@@ -8,6 +8,7 @@ type SheetForm = {
   kanak: string;
   timeslot: string;
   ucapan: string;
+  status:string;
 };
 
 export async function POST(req: NextRequest) {
@@ -34,11 +35,11 @@ export async function POST(req: NextRequest) {
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!A:F",
+      range: "Sheet1!A:G",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
-          [body.name, body.phone, body.dewasa, body.kanak, body.timeslot, body.ucapan],
+          [body.name, body.phone, body.dewasa, body.kanak, body.timeslot, body.ucapan, body.status],
         ],
       },
     });

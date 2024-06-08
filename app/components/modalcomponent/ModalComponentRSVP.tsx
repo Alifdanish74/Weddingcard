@@ -3,7 +3,7 @@ import React from "react";
 
 interface ModalComponentRSVPProps {
   onConfirm: (nextModal: string) => void;
-  onCancel: () => void;
+  onCancel: (nextModal: string) => void;
 }
 
 const ModalComponentRSVP: React.FC<ModalComponentRSVPProps> = ({
@@ -24,7 +24,7 @@ const ModalComponentRSVP: React.FC<ModalComponentRSVPProps> = ({
         </button>
         <button
           className="py-2 border-4 bg-transparent font-semibold hover:bg-red-500 text-black rounded"
-          onClick={onCancel}
+          onClick={() => onConfirm('RSVPTidakHadir')}
         >
           Tidak Hadir
         </button>

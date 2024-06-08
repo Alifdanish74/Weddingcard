@@ -37,31 +37,6 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
       .catch((error) => console.error("Error fetching ucapan:", error));
   };
 
-  //test
-  // const getUcapan = async () => {
-  //   try {
-  //     const res = await fetch("/api/get-ucapan", {
-  //       cache: "no-cache",
-  //       // next: {revalidate: 1}
-  //     })
-  //     .then((data) => {
-  //       const filteredData = data.ucapan.filter(
-  //         (entry: UcapanData) => entry.ucapan
-  //       );
-  //       setUcapanData(filteredData);
-  //     })
-
-  //     if (!res.ok) {
-  //       throw new Error("Failed to fetch data");
-  //     }
-
-  //     return res.json();
-  //   } catch (error) {
-  //     console.log("Error loading topics:", error);
-  //     return { topics: [] };
-  //   }
-  // };
-  //test
 
   useEffect(() => {
     fetchGuestbookData();
@@ -72,7 +47,8 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
   }, [guestbookUpdated]);
 
   const settings = {
-    dots: true,
+    dots: false,
+    arrows: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
