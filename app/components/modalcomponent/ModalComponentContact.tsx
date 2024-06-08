@@ -17,7 +17,7 @@ const ModalComponentContact: React.FC<ModalComponentContactProps> = () => {
         {/* Contact 1 */}
         <Contact
           contactName="Arshad"
-          phoneNumber="01123268530"
+          phoneNumber="0123157930"
           wsLink="http://wasap.my/601123268530/WalimatulurusDanish&Iqkriany"
         />
 
