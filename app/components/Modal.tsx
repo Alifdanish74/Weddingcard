@@ -18,12 +18,11 @@ interface ModalProps {
   modalType: string; // Added prop to specify which modal component to render
   onConfirm: (nextModal: string) => void;
   onCancel: () => void;
-  onTidakHadir: (nextModal: string) => void;
   isClosing: boolean;
   onGuestbookUpdate: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onTidakHadir, onCancel, onGuestbookUpdate   }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, onCancel, onGuestbookUpdate   }) => {
 
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -44,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, modalType, onConfirm, on
   const renderModalContent = () => {
     switch (modalType) {
       case 'RSVP':
-        return <ModalComponentRSVP onConfirm={onConfirm} onCancel={onTidakHadir} />;
+        return <ModalComponentRSVP onConfirm={onConfirm} />;
       case 'Money Gift':
         return <ModalComponentMoneyGift />;
       case 'Wishlist':

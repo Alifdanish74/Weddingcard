@@ -3,12 +3,10 @@ import React from "react";
 
 interface ModalComponentRSVPProps {
   onConfirm: (nextModal: string) => void;
-  onCancel: (nextModal: string) => void;
 }
 
 const ModalComponentRSVP: React.FC<ModalComponentRSVPProps> = ({
   onConfirm,
-  onCancel,
 }) => {
   return (
     <>
