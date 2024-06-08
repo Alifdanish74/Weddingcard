@@ -40,7 +40,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ isPlaying, setIsPlaying }) =>
     <div className='flex -z-1 sticky justify-center content-center top-0 bg-transparent p-6 pt-10 text-center '>
       <audio
         ref={audioRef}
-        src="/kisahcintakita.mp3"
+        src="https://l4lp5z4mhbcqycfi.public.blob.vercel-storage.com/Kisahcintakita-rLEvlErlgGc2SaWcG5ZxlmhfpZ8c4i.mp3"
         controlsList="nodownload"
         loop
         className='hidden'
