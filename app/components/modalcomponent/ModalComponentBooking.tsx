@@ -52,9 +52,6 @@ const ModalComponentBooking: React.FC<ModalComponentBookingProps> = ({
         throw new Error("Network response was not ok");
       }
 
-      const content = await response.json();
-      console.log ("hehehe");
-
       setName("");
       setPhone("");
       setItem(title);

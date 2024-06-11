@@ -1,8 +1,8 @@
 // components/Contact.tsx
-'use client'
+"use client";
 import Image from "next/image";
 import { FiCopy } from "react-icons/fi";
-import { FaWhatsapp  } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import { FC, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,65 +11,85 @@ interface ContactProps {
   contactName: string;
   phoneNumber: string;
   wsLink: string;
+  gelaran: string;
 }
 
 interface CopyButtonProps {
-    text: string;
-  }
-  
-  const CopyButton = ({ text }: CopyButtonProps) => {
-    // const [copied, setCopied] = useState(false);
-    const notify = () => toast.success("Copied to clipboard",
-    {
+  text: string;
+}
+
+const CopyButton = ({ text }: CopyButtonProps) => {
+  // const [copied, setCopied] = useState(false);
+  const notify = () =>
+    toast.success("Copied to clipboard", {
       autoClose: 800,
-      position: 'top-center',
+      position: "top-center",
       closeOnClick: true,
-    }
-  );
-  
-    const copyToClipboard = () => {
-      navigator.clipboard.writeText(text);
-      // setCopied(true);
-      // setTimeout(() => {
-      //   setCopied(false);
-      // }, 800);
-      notify()
-    };
-  
-    return (
-      <button onClick={copyToClipboard} className="ml-2 font-black flex flex-row items-center">
-        <FiCopy className="text-black" />
-        {/* {copied ? (
+    });
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(text);
+    // setCopied(true);
+    // setTimeout(() => {
+    //   setCopied(false);
+    // }, 800);
+    notify();
+  };
+
+  return (
+    <button
+      onClick={copyToClipboard}
+      className="ml-2 font-black flex flex-row items-center"
+    >
+      <FiCopy className="text-black" />
+      {/* {copied ? (
           <span className="ml-1 text-center justify-center items-center text-gray-500">
             Copied!
           </span>
         ) : null} */}
-      </button>
-    );
-  };
+    </button>
+  );
+};
 
-
-const Contact: FC<ContactProps> = ({ contactName, phoneNumber, wsLink }) => {
+const Contact: FC<ContactProps> = ({
+  contactName,
+  phoneNumber,
+  wsLink,
+  gelaran,
+}) => {
   return (
-    <div className="flex items-center justify-center border rounded-lg p-2 my-1 bg-white shadow-md">
-      <div className="grid grid-cols-3 gap-4">
-        <h3 className="text-base text-balance font-normal text-gray-800">
+    <div className="flex flex-row items-center justify-around border rounded-lg p-2 my-1 bg-white shadow-md">
+      {/* <div className="flex flex-row  gap-4"> */}
+      <div className="text-center w-24">
+        <h3 className="text-base  font-normal text-gray-800">
           {contactName}
         </h3>
-        <h3 className="flex flex-row text-base text-balance font-normal text-gray-800">
+        <h6 className="text-balance text-center text-xs font-light text-gray-800">
+          {gelaran}
+        </h6>
+      </div>
+
+      {/* <div className="w-20"> */}
+      {/* </div> */}
+
+      <div className=" w-32 justify-center flex items-center">
+        <h3 className="flex flex-row text-base  font-normal text-gray-800">
           {phoneNumber}
           <CopyButton text={phoneNumber} />
         </h3>
+      </div>
 
-        <a 
+      <div className="flex text-center items-end justify-end">
+        <a
           href={wsLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-end text-black"
+          className="text-base text-black"
         >
           <FaWhatsapp className="mr-2" />
         </a>
       </div>
+      {/* </div> */}
     </div>
   );
 };
