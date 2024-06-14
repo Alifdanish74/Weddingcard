@@ -1,5 +1,4 @@
-// components/ModalComponentRSVPSlot.js
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { MdOutlineCancel } from "react-icons/md";
 import { CircleLoader } from "react-spinners";
@@ -21,9 +20,10 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [dewasa, setDewasa] = useState(1);
   const [kanak, setKanak] = useState(0);
   const [ucapan, setUcapan] = useState("");
-  const [timeslot, setTimeSlot] = useState("7:30 PM - 8:30 PM | Saudara-mara");
+  const [timeslot, setTimeSlot] = useState("7:30 PM - 9:00 PM | Saudara-mara");
   const [status, setStatus] = useState("Hadir");
   const [loading, setLoading] = useState(false);
+  const maxChars = 200; // Set your desired character limit
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
         kanak,
         timeslot,
         ucapan,
-        status
+        status,
       };
 
       const response = await fetch("/api/submit-form", {
@@ -227,17 +227,15 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
               value={ucapan}
               onChange={(e) => setUcapan(e.target.value)}
               className="w-full p-2 h-20 border border-gray-300 rounded-md"
+              maxLength={maxChars} // Added maxLength attribute
             />
+            <div className="text-right text-gray-500 text-sm">
+              {ucapan.length}/{maxChars} characters
+            </div>
           </div>
           {/* Ucapan end */}
-          {/* <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
-          >
-            Submit
-          </button> */}
           <div className=" flex space-x-4 text-sm font-semibold justify-center items-center">
-          {loading ? (
+            {loading ? (
               <button
                 className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
                 disabled
@@ -253,7 +251,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
                 Submit
               </button>
             )}
- 
+
             <button
               onClick={onCancel}
               className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"

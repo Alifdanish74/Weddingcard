@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -37,9 +37,13 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
       .catch((error) => console.error("Error fetching ucapan:", error));
   };
 
-
+  // Initial fetch
   useEffect(() => {
     fetchGuestbookData();
+  }, []);
+
+  // Fetch when guestbookUpdated changes
+  useEffect(() => {
     if (guestbookUpdated) {
       fetchGuestbookData();
       console.log("DATA IS FETCHING AFTER FORM SUBMITTED");
@@ -47,8 +51,8 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
   }, [guestbookUpdated]);
 
   const settings = {
-    dots: false,
-    arrows: true,
+    dots: true,
+    arrow: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
