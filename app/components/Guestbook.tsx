@@ -51,7 +51,6 @@ function Guestbook({ guestbookUpdated }: GuestbookProps) {
   }, [guestbookUpdated]);
 
   const settings = {
-    dots: true,
     arrow: true,
     speed: 500,
     slidesToShow: 1,
