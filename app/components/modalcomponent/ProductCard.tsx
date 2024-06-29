@@ -38,7 +38,7 @@ const ProductCard: FC<ProductCardProps> = ({
         <div className="mt-4 flex space-x-4 text-sm font-semibold justify-center items-center">
           {!isBooked ? (
             <>
-              <button className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
+              <button className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-green-300 transition-colors">
                 <a
                   href={itemLink}
                   target="_blank"
@@ -51,17 +51,26 @@ const ProductCard: FC<ProductCardProps> = ({
               </button>
               <button
                 onClick={() => onConfirmBook("Booking", title, imageSrc)}
-                className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
+                className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-green-300 transition-colors"
               >
                 <FaRegBookmark className="mr-2" />
                 Tempah
               </button>
             </>
           ) : (
-            <button className="flex items-center bg-gray-100 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
-              <SiTicktick className="mr-2" />
-              Telah Ditempah
-            </button>
+            
+              <button className="flex items-center bg-green-400 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
+                <a
+                  href={itemLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center"
+                >
+                  <SiTicktick className="mr-2" />
+                  Telah Ditempah
+                </a>
+              </button>
+            
           )}
         </div>
       </div>
