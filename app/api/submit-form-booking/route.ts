@@ -10,6 +10,8 @@ type SheetForm = {
 export async function POST(req: NextRequest) {
   const body = (await req.json()) as SheetForm;
 
+  console.log("Received body:", body);
+
   try {
     // prepare auth
     const auth = new google.auth.GoogleAuth({
@@ -29,14 +31,27 @@ export async function POST(req: NextRequest) {
       version: "v4",
     });
 
-    const response = await sheets.spreadsheets.values.append({
+    // Find the next available row in the range
+    const getRows = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!H:J",
+      range: "Sheet1!H:H", // Check column H to find the next empty row
+    });
+
+    const numRows = getRows.data.values ? getRows.data.values.length : 0;
+    const nextRow = numRows + 1; // Calculate the next available row
+
+    const range = `Sheet1!H${nextRow}:J${nextRow}`; // Define the target range
+
+    const response = await sheets.spreadsheets.values.update({
+      spreadsheetId: process.env.SHEET_ID,
+      range: range,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [[body.name, body.phone, body.item]],
       },
     });
+
+    console.log("Google Sheets API response:", response.data);
 
     return NextResponse.json(
       {
@@ -44,24 +59,26 @@ export async function POST(req: NextRequest) {
       },
       {
         headers: {
-          "Cache-Control":
-            "no-cache, must-revalidate, proxy-revalidate",
+          "Cache-Control": "no-cache, must-revalidate, proxy-revalidate",
           Pragma: "no-cache",
           Expires: "0",
         },
       }
     );
   } catch (e) {
-    console.error(e);
-    return NextResponse.json({
-      message: 'Something went wrong'
-    }, {
-      status: 500,
-      headers: {
-        'Cache-Control': 'no-cache, must-revalidate, proxy-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
+    console.error("Error:", e);
+    return NextResponse.json(
+      {
+        message: 'Something went wrong'
+      },
+      {
+        status: 500,
+        headers: {
+          'Cache-Control': 'no-cache, must-revalidate, proxy-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0',
+        }
       }
-    });
+    );
   }
 }

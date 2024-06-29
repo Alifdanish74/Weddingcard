@@ -33,9 +33,21 @@ export async function POST(req: NextRequest) {
       version: "v4",
     });
 
-    const response = await sheets.spreadsheets.values.append({
+    
+    // Find the next available row in the range
+    const getRows = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!A:G",
+      range: "Sheet1!A:A", // Check column A to find the next empty row
+    });
+
+    const numRows = getRows.data.values ? getRows.data.values.length : 0;
+    const nextRow = numRows + 1; // Calculate the next available row
+
+    const range = `Sheet1!A${nextRow}:G${nextRow}`;
+
+    const response = await sheets.spreadsheets.values.update({
+      spreadsheetId: process.env.SHEET_ID,
+      range: range,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
@@ -43,6 +55,8 @@ export async function POST(req: NextRequest) {
         ],
       },
     });
+
+    console.log("Google Sheets API response:", response.data);
 
     return NextResponse.json({
       data: response.data,
