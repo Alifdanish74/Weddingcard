@@ -175,6 +175,16 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
               "7 in 1 Comforter Queen Size"
             )}
           />
+          {/* Item 11 */}
+          <ProductCard
+            imageSrc="/carole.jpeg"
+            title="Carote Nonstick Cookware Set (5 Pcs) Handle Removable"
+            itemLink="https://shopee.com.my/Carote-Nonstick-Cookware-Set-(5-11Pcs)-Handle-Removable-Non-stick-Frying-Pan-Wok-Suit-All-Stove-Induction-Light-i.312980029.12227674238?sp_atk=1e7a47b9-cd5a-4e95-be35-c4f156b0940b&xptdk=1e7a47b9-cd5a-4e95-be35-c4f156b0940b"
+            onConfirmBook={onConfirmBook}
+            isBooked={isItemBooked(
+              "Carote Nonstick Cookware Set (5 Pcs) Handle Removable"
+            )}
+          />
         </div>
       </div>
     </>

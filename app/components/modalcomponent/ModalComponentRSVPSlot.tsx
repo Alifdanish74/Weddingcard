@@ -20,7 +20,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [dewasa, setDewasa] = useState(1);
   const [kanak, setKanak] = useState(0);
   const [ucapan, setUcapan] = useState("");
-  const [timeslot, setTimeSlot] = useState("7:30 PM - 9:00 PM | Saudara-mara");
+  const [timeslot, setTimeSlot] = useState("7:30 PM - 9:00 PM | Saudara-mara/Jiran");
   const [status, setStatus] = useState("Hadir");
   const [loading, setLoading] = useState(false);
   const maxChars = 200; // Set your desired character limit
@@ -66,7 +66,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
       setPhone("");
       setDewasa(1);
       setKanak(0);
-      setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara");
+      setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara/Jiran");
       setUcapan("");
       setStatus("Hadir");
       setLoading(false);
@@ -157,11 +157,11 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
               id="timeslot"
               value={timeslot}
               onChange={(e) => setTimeSlot(e.target.value)}
-              className="w-full p-1 border border-gray-300 rounded-md"
+              className="w-full p-1 border border-gray-300 rounded-md text-sm"
             >
               {[
-                "7:30 PM - 9:00 PM | Saudara-mara",
-                "9:00 PM - 11:00 PM | Rakan-rakan",
+                "7:30 PM - 9:00 PM | Saudara-mara/Jiran",
+                "9:00 PM - 11:00 PM | Rakan-rakan/Kenalan",
               ].map((time) => (
                 <option key={time} value={time}>
                   {time}
