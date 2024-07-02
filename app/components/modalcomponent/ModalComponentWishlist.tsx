@@ -185,6 +185,16 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
               "Carote Nonstick Cookware Set (5 Pcs) Handle Removable"
             )}
           />
+          {/* Item 12 */}
+          <ProductCard
+            imageSrc="/trolley.jpeg"
+            title="LONTAI Trolley Shopping Cart 54L - 8 Wheels"
+            itemLink="https://shopee.com.my/LONTAI-Trolley-Shopping-Cart-Lightweight-Easy-To-Carry-Lockable-Direction-Changeable-Wheels-Large-Space-Trolley-i.1242435695.25926574615?publish_id=&sp_atk=bff30efc-a404-4b65-80fc-b8e87ce55d1c&xptdk=bff30efc-a404-4b65-80fc-b8e87ce55d1c"
+            onConfirmBook={onConfirmBook}
+            isBooked={isItemBooked(
+              "LONTAI Trolley Shopping Cart 54L - 8 Wheels"
+            )}
+          />
         </div>
       </div>
     </>
