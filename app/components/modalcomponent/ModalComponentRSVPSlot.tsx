@@ -160,8 +160,8 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
               className="w-full p-1 border border-gray-300 rounded-md text-sm"
             >
               {[
-                "7:30 PM - 9:00 PM | Saudara-mara/Jiran",
-                "9:00 PM - 11:00 PM | Rakan-rakan/Kenalan",
+                "7:30 PM - 9:00 PM | Saudara-mara",
+                "9:00 PM - 11:00 PM | Rakan-rakan",
               ].map((time) => (
                 <option key={time} value={time}>
                   {time}
