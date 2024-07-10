@@ -37,13 +37,13 @@ export async function POST(req: NextRequest) {
     // Find the next available row in the range
     const getRows = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!A:A", // Check column A to find the next empty row
+      range: "Sheet1!B:B", // Check column A to find the next empty row
     });
 
     const numRows = getRows.data.values ? getRows.data.values.length : 0;
     const nextRow = numRows + 1; // Calculate the next available row
 
-    const range = `Sheet1!A${nextRow}:G${nextRow}`;
+    const range = `Sheet1!B${nextRow}:H${nextRow}`;
 
     const response = await sheets.spreadsheets.values.update({
       spreadsheetId: process.env.SHEET_ID,
