@@ -20,7 +20,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [dewasa, setDewasa] = useState(1);
   const [kanak, setKanak] = useState(0);
   const [ucapan, setUcapan] = useState("");
-  const [timeslot, setTimeSlot] = useState("7:30 PM - 9:00 PM | Saudara-mara/Jiran");
+  const [timeslot, setTimeSlot] = useState("7:30 PM - 9:00 PM | Saudara-mara");
   const [status, setStatus] = useState("Hadir");
   const [loading, setLoading] = useState(false);
   const maxChars = 200; // Set your desired character limit
@@ -66,7 +66,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
       setPhone("");
       setDewasa(1);
       setKanak(0);
-      setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara/Jiran");
+      setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara");
       setUcapan("");
       setStatus("Hadir");
       setLoading(false);
