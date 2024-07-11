@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
     console.log("Calling Google Sheets API...");
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!H:J",
+      range: "Sheet1!I:K",
     });
 
     const bookings = response.data.values || [];
