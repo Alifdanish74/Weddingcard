@@ -25,7 +25,7 @@ export const GET = async (req: NextRequest) => {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!A:F",
+      range: "Sheet1!B:G",
     });
 
     const rows = response.data.values;
