@@ -80,6 +80,7 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
 
           {wishlistitem.map((item)=> (
             <ProductCard
+            key={item.itemLink}
             imageSrc={item.imageSrc}
             title={item.title}
             itemLink={item.itemLink}
