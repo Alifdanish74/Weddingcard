@@ -78,9 +78,11 @@ const ModalComponentWishlist: React.FC<ModalComponentWishlistProps> = ({
         </h2>
         <div className="overflow-y-auto overflow-hidden max-h-[60vh]">
 
-          {wishlistitem.map((item)=> (
+          {wishlistitem.map((item, index)=> (
             <ProductCard
+            
             key={item.itemLink}
+            number={index + 1}
             imageSrc={item.imageSrc}
             title={item.title}
             itemLink={item.itemLink}

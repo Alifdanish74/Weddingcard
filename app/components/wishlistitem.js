@@ -102,6 +102,42 @@ export const wishlistitem = [
     itemLink:"https://shopee.com.my/DESSINI-ITALY-WSB-23-S-Die-Cast-Aluminium-Non-Stick-Casserole-Pot-Bowl-Double-Side-Grill-Pan-Cookware-PERIUK-(23-Pcs)-i.370480745.19409535277?xptdk=1cd6ff1d-a7f0-44db-9844-85848e8b8181",
     
   },
+  {
+    imageSrc:"/Mixer.jpeg",
+    title:"Pensonic 3L Chef's Like series Stand Mixer",
+    itemLink:"https://shopee.com.my/product/26881612/1397252720?d_id=ccf9f&uls_trackid=50bepfet007c&utm_content=24nc2ikW7XrRNzsgCNXSjSc8TQEs",
+    
+  },
+  {
+    imageSrc:"/lunchbox.jpeg",
+    title:"Lunch Box Gourmet 304 Stainless Steel",
+    itemLink:"https://shopee.com.my/product/227844780/16376690335?d_id=ccf9f&uls_trackid=50bepffs00ap&utm_content=24nc2ikW7YCVdtGGTtWwbbsGEoNF",
+    
+  },
+  {
+    imageSrc:"/clock.jpeg",
+    title:"OSUKI Wall Clock Analog Quartz Fiber Wood",
+    itemLink:"https://shopee.com.my/product/20289315/9578309660?d_id=ccf9f&uls_trackid=50betou9007c&utm_content=24nc2ikW7Ze351tXXad2v1dMJZRh",
+    
+  },
+  {
+    imageSrc:"/airfryer.jpeg",
+    title:"YAKO 9L 10L Air Fryer 1800W",
+    itemLink:"https://shopee.com.my/YAKO-9L-10L-Air-Fryer-1800W-Temperature-Control-Digital-Touch-Electric-Fryer-Non-Stick-Coating-Large-Capacity-%E7%A9%BA%E6%B0%94%E7%82%B8%E9%94%85-i.1108768128.25173054109?sp_atk=7c92a27a-69b3-46b1-a5b5-36aa837e222b&xptdk=7c92a27a-69b3-46b1-a5b5-36aa837e222b",
+    
+  },
+  {
+    imageSrc:"/iron.jpeg",
+    title:"MMX SteamPro 9005 Steam Generator Iron Green",
+    itemLink:"https://shopee.com.my/MMX-SteamPro-9005-Steam-Generator-Iron-Green-KB388-UltraLight-6.5Bar-Steam-Station-Iron-i.19831046.16694859552?sp_atk=116dbc7b-fb4e-4a8e-8c76-83dd39b1b491&xptdk=116dbc7b-fb4e-4a8e-8c76-83dd39b1b491",
+    
+  },
+  {
+    imageSrc:"/blender.jpeg",
+    title:"Heavy Duty Belnder 3L 4500W",
+    itemLink:"https://shopee.com.my/-MY-STOCK-3L-4500W-Heavy-Duty-Blender-Pengisar-Tugas-Berat-Mixer-Juicer-High-Power-Blender-Machine-i.969019758.14599054399?sp_atk=30c0723c-00d4-4628-a843-a61550b6a7dd&xptdk=30c0723c-00d4-4628-a843-a61550b6a7dd",
+    
+  },
   
   
 ];

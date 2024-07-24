@@ -11,6 +11,7 @@ interface ProductCardProps {
   itemLink: string;
   onConfirmBook: (nextModal: string, title: string, image: string) => void;
   isBooked: boolean; // New prop
+  number: number;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
@@ -19,10 +20,11 @@ const ProductCard: FC<ProductCardProps> = ({
   itemLink,
   onConfirmBook,
   isBooked,
+  number,
 }) => {
   return (
     <div className="flex items-center border rounded-lg p-4 my-2 bg-white shadow-md">
-      <div className="flex-shrink-0 mr-4">
+      <div className="flex-shrink-0 mr-4 ">
         <Image
           src={imageSrc}
           alt="Product Image"
@@ -33,7 +35,7 @@ const ProductCard: FC<ProductCardProps> = ({
       </div>
       <div className="flex-grow">
         <h3 className="text-base text-balance text-center font-normal text-gray-800">
-          {title}
+           {number})  {title}
         </h3>
         <div className="mt-4 flex space-x-4 text-sm font-semibold justify-center items-center">
           {!isBooked ? (
@@ -58,19 +60,17 @@ const ProductCard: FC<ProductCardProps> = ({
               </button>
             </>
           ) : (
-            
-              <button className="flex items-center bg-green-400 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
-                <a
-                  href={itemLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center"
-                >
-                  <SiTicktick className="mr-2" />
-                  Telah Ditempah
-                </a>
-              </button>
-            
+            <button className="flex items-center bg-green-400 text-gray-800 px-3 py-2 rounded hover:bg-gray-200 transition-colors">
+              <a
+                href={itemLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <SiTicktick className="mr-2" />
+                Telah Ditempah
+              </a>
+            </button>
           )}
         </div>
       </div>
