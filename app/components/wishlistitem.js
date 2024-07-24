@@ -6,17 +6,18 @@ export const wishlistitem = [
       "https://shopee.com.my/SHARP-Microwave-Oven-20L-R207EK-R219EK-R2021GK-Mechanical-Dial-Flatbed-R2121FGK-i.19134170.23860216391?sp_atk=439c3212-4d92-43b2-87ae-ea502bd8749b&xptdk=439c3212-4d92-43b2-87ae-ea502bd8749b",
   },
   {
-    imageSrc:"/vacuum.jpeg",
-    title:"PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro",
-    itemLink:"https://shopee.com.my/PerySmith-Cordless-Vacuum-Cleaner-Xtreme-Series-X20-Pro-i.130925376.4116947223?sp_atk=9479ea04-db53-4978-b5b5-a6f37b541c0e&xptdk=9479ea04-db53-4978-b5b5-a6f37b541c0e",
-    
+    imageSrc:"/ricecooker.jpeg",
+    title:"Russell Taylors Conventional Rice Cooker",
+    itemLink:"https://shopee.com.my/product/66336205/7716852333?d_id=ccf9f&uls_trackid=50begnvo007c&utm_content=24nc2ikW7FNfiNK6xsSGDTTuzrUP",
+   
   },
   {
-    imageSrc:"/dessini.jpeg",
-    title:"DESSINI ITALY WSB-23-S Cookware Set",
-    itemLink:"https://shopee.com.my/DESSINI-ITALY-WSB-23-S-Die-Cast-Aluminium-Non-Stick-Casserole-Pot-Bowl-Double-Side-Grill-Pan-Cookware-PERIUK-(23-Pcs)-i.370480745.19409535277?xptdk=1cd6ff1d-a7f0-44db-9844-85848e8b8181",
-    
+    imageSrc:"/kipas.jpeg",
+    title:"Hulmers - 15 Fan Blades Powerful Fan",
+    itemLink:"https://shopee.com.my/product/399828568/22072865757?uls_trackid=50bellcn007c&utm_campaign=-&utm_content=hulmersbekappart2----&utm_medium=affiliates&utm_source=an_12315000002&utm_term=bhnmnxcg5eko",
+   
   },
+  
   {
     imageSrc:"/kettle.jpeg",
     title:"DESSINI ITALY Glass Electric Kettle Temperature Control",
@@ -89,5 +90,18 @@ export const wishlistitem = [
     itemLink:"https://shopee.com.my/product/241071731/23468728153?uls_trackid=50ar0ri100ap&utm_campaign=-&utm_content=deco-shelf---&utm_medium=affiliates&utm_source=an_12368690000&utm_term=bh8dpstpmqhh",
    
   },
+  {
+    imageSrc:"/vacuum.jpeg",
+    title:"PerySmith Cordless Vacuum Cleaner Xtreme Series X20 Pro",
+    itemLink:"https://shopee.com.my/PerySmith-Cordless-Vacuum-Cleaner-Xtreme-Series-X20-Pro-i.130925376.4116947223?sp_atk=9479ea04-db53-4978-b5b5-a6f37b541c0e&xptdk=9479ea04-db53-4978-b5b5-a6f37b541c0e",
+    
+  },
+  {
+    imageSrc:"/dessini.jpeg",
+    title:"DESSINI ITALY WSB-23-S Cookware Set",
+    itemLink:"https://shopee.com.my/DESSINI-ITALY-WSB-23-S-Die-Cast-Aluminium-Non-Stick-Casserole-Pot-Bowl-Double-Side-Grill-Pan-Cookware-PERIUK-(23-Pcs)-i.370480745.19409535277?xptdk=1cd6ff1d-a7f0-44db-9844-85848e8b8181",
+    
+  },
+  
   
 ];
