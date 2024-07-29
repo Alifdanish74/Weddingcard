@@ -25,7 +25,7 @@ export const GET = async (req: NextRequest) => {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SHEET_ID,
-      range: "Sheet1!B:G",
+      range: "Sheet1!B:H",
     });
 
     const rows = response.data.values;
@@ -38,7 +38,7 @@ export const GET = async (req: NextRequest) => {
 
     const ucapanData = rows.slice(1).map(row => ({
       name: row[0],
-      ucapan: row[5],
+      ucapan: row[6],
     }));
 
     const res = NextResponse.json({
