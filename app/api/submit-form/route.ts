@@ -7,6 +7,7 @@ type SheetForm = {
   dewasa: string;
   kanak: string;
   timeslot: string;
+  pihak: string;
   ucapan: string;
   status:string;
 };
@@ -43,7 +44,7 @@ export async function POST(req: NextRequest) {
     const numRows = getRows.data.values ? getRows.data.values.length : 0;
     const nextRow = numRows + 1; // Calculate the next available row
 
-    const range = `Sheet1!B${nextRow}:H${nextRow}`;
+    const range = `Sheet1!B${nextRow}:I${nextRow}`;
 
     const response = await sheets.spreadsheets.values.update({
       spreadsheetId: process.env.SHEET_ID,
@@ -51,7 +52,7 @@ export async function POST(req: NextRequest) {
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
-          [body.name, body.phone, body.dewasa, body.kanak, body.timeslot, body.ucapan, body.status],
+          [body.name, body.phone, body.dewasa, body.kanak, body.timeslot, body.pihak, body.ucapan, body.status],
         ],
       },
     });

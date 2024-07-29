@@ -21,6 +21,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
   const [kanak, setKanak] = useState(0);
   const [ucapan, setUcapan] = useState("");
   const [timeslot, setTimeSlot] = useState("7:30 PM - 9:00 PM | Saudara-mara");
+  const [pihak, setPihak] = useState("");
   const [status, setStatus] = useState("Hadir");
   const [loading, setLoading] = useState(false);
   const maxChars = 200; // Set your desired character limit
@@ -41,6 +42,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
         dewasa,
         kanak,
         timeslot,
+        pihak,
         ucapan,
         status,
       };
@@ -67,6 +69,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
       setDewasa(1);
       setKanak(0);
       setTimeSlot("7:30 PM - 9:00 PM | Saudara-mara");
+      setPihak("");
       setUcapan("");
       setStatus("Hadir");
       setLoading(false);
@@ -158,6 +161,7 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
               value={timeslot}
               onChange={(e) => setTimeSlot(e.target.value)}
               className="w-full p-1 border border-gray-300 rounded-md text-sm"
+              required
             >
               {[
                 "7:30 PM - 9:00 PM | Saudara-mara",
@@ -170,6 +174,34 @@ const ModalComponentRSVPSlot: React.FC<ModalComponentRSVPSlotProps> = ({
             </select>
           </div>
           {/* Time slot end */}
+          {/* Pihak start */}
+          <div className="mb-2">
+            <label
+              htmlFor="pihak"
+              className="block text-center text-gray-700 font-bold mb-2"
+            >
+              Jemputan Dari
+            </label>
+            <select
+              id="pihak"
+              value={pihak}
+              onChange={(e) => setPihak(e.target.value)}
+              className="w-full p-1 border border-gray-300 rounded-md text-sm"
+              required
+            >
+              <option value="" disabled selected>
+                Pihak..
+              </option>
+              {[
+                "Pihak Perempuan", "Pihak Lelaki"
+              ].map((pihak) => (
+                <option key={pihak} value={pihak}>
+                  {pihak}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* Pihak end */}
           {/* Jumlah dewasa start */}
           <div className="mb-2">
             <label
